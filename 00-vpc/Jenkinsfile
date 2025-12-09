@@ -18,11 +18,11 @@ pipeline {
     }
     stages {
         stage('init') {
-            input {
+            /* input {
                 message "Should we continue?"
                 ok "Yes, we should."
                 
-            }
+            } */
             steps {
                 script{
                   withAWS(region: 'us-east-1', credentials: 'aws-creds') {   
@@ -37,7 +37,7 @@ pipeline {
             }
         }
     } 
-    stages {
+    /* stages {
         stage('apply') {
             steps {
                 script{
@@ -50,7 +50,7 @@ pipeline {
                 }
                 
             }
-        }
+        } */
         /* stage('Trigger Downstream') {
             when {
                 expression = { params.ACTION = 'apply' }
