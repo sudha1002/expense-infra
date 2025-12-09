@@ -51,7 +51,7 @@ pipeline {
                 
             }
         }
-        stage('Trigger Downstream') {
+        /* stage('Trigger Downstream') {
             when {
                 expression = { params.ACTION = 'apply' }
             }
@@ -60,7 +60,7 @@ pipeline {
                 propagate = true 
 
             }  
-        }
+        } */
     } 
     
              
