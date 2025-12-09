@@ -51,15 +51,15 @@ pipeline {
             }
 
         }
-        stage('trigger sg'){
+        /* stage('trigger sg'){
             when{
                 expression { params.ACTION = 'apply'}
             }
             steps {
                 build job: "10-sg", parameters: [string(name: 'ACTION', value: 'apply')], propagate: false
             }
-        }
-        /* stage('destroy') {  
+        } */
+        stage('destroy') {  
             steps {
                 script{
                   withAWS(region: 'us-east-1', credentials: 'aws-creds') {   
@@ -71,7 +71,7 @@ pipeline {
                   }
                 }
                 
-            } */
+            }
     } 
     
         /* stage('Trigger Downstream') {
