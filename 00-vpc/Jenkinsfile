@@ -10,12 +10,12 @@ pipeline {
         timeout(time: 32, unit: 'MINUTES')
         ansiColor('xterm')
     }
-    parameters {
+    /* parameters {
         
         choice(name: 'ACTION', choices: ['apply', 'destroy'], description: 'Pick something')
 
         
-    }
+    } */
          
     stages{
         stage('init') {  
@@ -65,8 +65,7 @@ pipeline {
                   withAWS(region: 'us-east-1', credentials: 'aws-creds') {   
                     sh """
                      cd 00-vpc
-                     terraform init -reconfigure
-                     terraform plan
+                     terraform destroy -auto-approve
                     """ 
                   }
                 }

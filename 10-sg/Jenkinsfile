@@ -10,9 +10,9 @@ pipeline {
         timeout(time: 30, unit: 'MINUTES')
         ansiColor('xterm')
     }
-    parameters{
+    /* parameters{
         choice(name: 'ACTION', choices: ['apply', 'destroy'], description: 'Pick something')
-    } 
+    }  */
     stages {
         stage('Init') {
             steps {
@@ -46,12 +46,24 @@ pipeline {
             }
 
         }
-        stage('trigger sg'){
+        stage('destroy') {  
+            steps {
+                script{
+                  withAWS(region: 'us-east-1', credentials: 'aws-creds') {   
+                    sh """
+                     cd 00-vpc
+                     terraform destroy -auto-approve
+                    """ 
+                  }
+                }
+                
+            }
+        /* stage('trigger sg'){
             when {
                 expression { params.ACTION = 'apply'}
             }
 
-        }
+        } */
         /* stage('Parallel Stages') {
             when { 
                 expression { params.ACTION == 'apply'}
