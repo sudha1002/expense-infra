@@ -16,13 +16,9 @@ pipeline {
 
         
     } */
-    stages {
-        stage('init') {
-            /* input {
-                message "Should we continue?"
-                ok "Yes, we should."
-                
-            } */
+         
+    stages{
+        stage('init') {  
             steps {
                 script{
                   withAWS(region: 'us-east-1', credentials: 'aws-creds') {   
@@ -54,6 +50,19 @@ pipeline {
                 
             }
         }
+        /* stage('destroy') {  
+            steps {
+                script{
+                  withAWS(region: 'us-east-1', credentials: 'aws-creds') {   
+                    sh """
+                     cd 00-vpc
+                     terraform init -reconfigure
+                     terraform plan
+                    """ 
+                  }
+                }
+                
+            } */
     } 
     
         /* stage('Trigger Downstream') {
