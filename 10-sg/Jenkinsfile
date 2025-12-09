@@ -58,6 +58,7 @@ pipeline {
                 }
                 
             }
+        }    
         /* stage('trigger sg'){
             when {
                 expression { params.ACTION = 'apply'}
