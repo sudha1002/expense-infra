@@ -10,9 +10,9 @@ pipeline {
         timeout(time: 30, unit: 'MINUTES')
         ansiColor('xterm')
     }
-    /* parameters{
+    parameters{
         choice(name: 'ACTION', choices: ['apply', 'destroy'], description: 'Pick something')
-    }  */
+    } 
     stages {
         stage('Init') {
             steps {
@@ -44,6 +44,13 @@ pipeline {
                  
                }
             }
+
+        }
+        stage('trigger sg'){
+            when {
+                expression { params.ACTION = 'apply'}
+            }
+
         }
         /* stage('Parallel Stages') {
             when { 

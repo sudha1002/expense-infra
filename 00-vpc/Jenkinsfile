@@ -10,12 +10,12 @@ pipeline {
         timeout(time: 32, unit: 'MINUTES')
         ansiColor('xterm')
     }
-    /* parameters {
+    parameters {
         
         choice(name: 'ACTION', choices: ['apply', 'destroy'], description: 'Pick something')
 
         
-    } */
+    }
          
     stages{
         stage('init') {  
@@ -48,6 +48,15 @@ pipeline {
                   }
                 }
                 
+            }
+
+        }
+        stage('trigger sg'){
+            when{
+                expression { params.ACTION = 'apply'}
+            }
+            steps {
+                build job: "10-sg", parameters: [string(name: 'ACTION', value: 'apply')], propagate: false
             }
         }
         /* stage('destroy') {  
