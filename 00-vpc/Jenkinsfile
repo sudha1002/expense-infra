@@ -52,7 +52,7 @@ pipeline {
 
         }
         stage('trigger sg'){
-            when{
+            when { 
                 expression { params.ACTION == 'apply'}
             }
             steps {
