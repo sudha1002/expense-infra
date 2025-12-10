@@ -5,13 +5,13 @@ terraform {
       version = "6.19.0"
     }
   }
-
   backend "s3" {
-    bucket = "terraform-eks-dev-bucket"
-    key    = "expense-dev-ingress-vpc" # you should have unique keys with in the bucket, same key should not be used in other repos or tf projects
+    bucket = "expense-infra-jenkins-bucket"
+    key    = "expense-dev-alb"
     region = "us-east-1"
-    dynamodb_table = "terraform-eks-dev-dynamodb"
+    dynamodb_table = "expense-infra-jenkins-dynamodb"
   }
+  
 }
 
 provider "aws" {
