@@ -11,7 +11,7 @@ module "vpc" {
     is_peering_required = true
 
 }
-/* resource "aws_db_subnet_group" "expense" {
+resource "aws_db_subnet_group" "expense" {
   name       = "${var.project_name}-${var.environment}"
   subnet_ids = module.vpc.database_subnet_ids
 
@@ -21,4 +21,4 @@ module "vpc" {
         Name = "${var.project_name}-${var.environment}"
     }
   )
-} */
+}
