@@ -55,8 +55,8 @@ pipeline {
             when { 
                 expression { params.ACTION == 'apply'}
             }
-            steps {
-                build job: "10-sg", parameters: [string(name: 'ACTION', value: 'apply')], propagate: true
+            steps{
+                build job: '10-sg', parameters: [string(name: 'ACTION', value: 'apply')], propagate: true
             }
         }
         /* stage('destroy') {  
