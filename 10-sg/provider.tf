@@ -6,7 +6,7 @@ terraform {
     }
   }
   backend "s3" {
-    bucket = "expense-infra-jenkins-bucket "
+    bucket = "expense-infra-jenkins-bucket"
     key    = "expense-dev-sg"
     region = "us-east-1"
     dynamodb_table = "expense-infra-jenkins-dynamodb"
