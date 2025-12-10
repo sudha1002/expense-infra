@@ -92,7 +92,7 @@ pipeline {
                 }
             }
         }
-        /* stage('Sequential') {
+        stage('Sequential') {
             stages {
                 stage('60-acm') {
                     steps {
@@ -105,7 +105,7 @@ pipeline {
                     }
                 }
             }
-        } */
+        }
     }
     
     post { 
